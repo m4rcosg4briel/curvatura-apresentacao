@@ -107,3 +107,7 @@ footer.site p { margin: 0 0 6px; }
 }
 
 figure a { display: block; }
+
+.prose h3 { font-family: var(--sans); font-size: 1.05rem; margin: 28px 0 8px; color: var(--ink); }
+.prose ul { margin: 0 0 1em; padding-left: 1.25em; color: var(--ink-soft); }
+.prose li { margin: 4px 0; }
