@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curvatura: análise de dados para Física Experimental</title>
+<meta name="description" content="Curvatura é um programa gratuito para Linux e Windows que leva o aluno da planilha de medidas ao relatório em formato ABNT: gráficos, ajuste de curvas com incertezas e propagação de erro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <strong>Curvatura</strong>
+    <nav aria-label="Seções">
+      <a href="#fluxo">Do dado ao relatório</a>
+      <a href="#planilha">Planilha</a>
+      <a href="#grafico">Gráfico</a>
+      <a href="#ajuste">Ajuste</a>
+      <a href="#erro">Erro propagado</a>
+      <a href="#relatorio">Relatório</a>
+      <a href="#confianca">Confiabilidade</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Ajuste de curvas para o laboratório de Física</h1>
+    <p class="lead">Curvatura leva o aluno da planilha de medidas ao relatório em formato ABNT sem trocar de programa: gráfico, ajuste com incertezas, propagação de erro e documento final no mesmo lugar.</p>
+    <p class="byline">Programa gratuito para Linux e Windows. Desenvolvido por Marcos Gabriel, licenciando em Física no IF Sertão.</p>
+    <figure>
+      <a href="img/grafico.png" target="_blank" rel="noopener"><img src="img/grafico.png" width="1280" height="800" alt="Janela do Curvatura mostrando o gráfico de T² em função de L de um pêndulo simples, com a reta de ajuste em vermelho e os pontos de duas planilhas sobrepostos."></a>
+      <figcaption><b>Figura 1.</b> Dois experimentos de pêndulo simples no mesmo gráfico, com a reta do ajuste linear e sua banda de confiança. Os dados são simulados para esta demonstração.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="proposito">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Para que serve</h2>
+      <p>Na disciplina de Física Experimental, o aluno costuma passar por três ferramentas: papel milimetrado para linearizar, uma planilha para as contas e um editor de texto para o relatório. Cada troca é uma chance de errar um arredondamento ou de perder a ligação entre o dado e o resultado.</p>
+      <p>O Curvatura foi pensado como alternativa livre e leve a programas como o Origin, com o vocabulário da disciplina: incerteza de instrumento, algarismos significativos, χ² reduzido, linearização. Um clique em um experimento comum, como pêndulo ou queda livre, já cria as colunas certas e sugere o modelo de ajuste.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fluxo">
+  <div class="wrap">
+    <h2>Do dado ao relatório</h2>
+    <ol class="flow">
+      <li><strong>Digitar ou importar</strong><span>Planilha própria ou arquivo CSV, TXT e XLSX. Um template cria as colunas do experimento.</span></li>
+      <li><strong>Olhar o gráfico</strong><span>Pontos com barras de erro, escala logarítmica, vários experimentos sobrepostos.</span></li>
+      <li><strong>Ajustar um modelo</strong><span>Parâmetros com incerteza, qualidade do ajuste e gráfico linearizado.</span></li>
+      <li><strong>Gerar o relatório</strong><span>Documento .docx em formato ABNT com dados, ajuste e gráfico.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="planilha">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Planilha com templates e colunas calculadas</h2>
+      <p>Cada planilha guarda um experimento, em abas internas. A pasta de trabalho inteira é salva num único arquivo.</p>
+      <ul>
+        <li>11 templates de experimentos: cinemática, trilho de ar, queda livre, atenuação de radiação gama, lei de Hooke, lente delgada, pêndulo simples, decaimento, ondulatória, curva I-V de diodo e espectrofotometria.</li>
+        <li>Colunas calculadas por fórmula (por exemplo <code>T**2</code>) que se atualizam sozinhas quando o dado muda, inclusive a partir de colunas de outra planilha.</li>
+        <li>Ponto duvidoso? Marcar como outlier tira o ponto das contas sem apagar a medida original. A detecção por IQR só sugere e pede confirmação.</li>
+        <li>Desfazer e refazer com Ctrl+Z e Ctrl+Y.</li>
+      </ul>
+    </div>
+    <figure>
+      <a href="img/planilha.png" target="_blank" rel="noopener"><img src="img/planilha.png" width="1280" height="800" loading="lazy" alt="Planilha do template Pêndulo Simples com colunas L, T e a coluna calculada T2, destacada em azul."></a>
+      <figcaption><b>Figura 2.</b> Template de pêndulo simples. A coluna T2 (em azul) é calculada a partir de T e não pode ser editada à mão.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="grafico">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Gráficos prontos para o relatório</h2>
+      <ul>
+        <li>Dispersão, linha, histograma e boxplot, com duplo eixo Y quando duas grandezas têm unidades diferentes.</li>
+        <li>Barras de erro fixas, percentuais, vindas de uma coluna ou assimétricas.</li>
+        <li>Sobreposição de outras planilhas no mesmo eixo, para comparar duas montagens ou duas turmas (Figura 1).</li>
+        <li>Escala logarítmica, resíduos e área sob a curva por integração numérica.</li>
+        <li>Exportação em PNG (300 dpi), PDF, SVG e como script Python independente, para reabrir o gráfico anos depois sem o programa.</li>
+      </ul>
+      <p>O menu também gera papel milimetrado, monolog e di-log em PDF A4, para as atividades de linearização feitas à mão.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ajuste">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Ajuste com incertezas</h2>
+      <p>Modelos linear, quadrático, lei de potência e exponencial, ou uma equação livre escrita com o nome real das colunas. Quando o aluno informa a incerteza das medidas, o ajuste é ponderado: pontos mais precisos pesam mais.</p>
+      <p>O resultado traz cada parâmetro com sua incerteza já arredondada pela regra do laboratório (erro com um algarismo significativo), além de χ², χ² reduzido, R², coeficiente de correlação e graus de liberdade.</p>
+    </div>
+    <figure class="narrow">
+      <a href="img/ajuste.png" target="_blank" rel="noopener"><img src="img/ajuste.png" width="1280" height="800" loading="lazy" alt="Tela de ajuste com o modelo linear escolhido e o resultado: a igual a 4,03 mais ou menos 0,03, b igual a menos 0,00 mais ou menos 0,02, R ao quadrado 0,99943."></a>
+      <figcaption><b>Figura 3.</b> Ajuste linear de T² em função de L. O coeficiente angular, 4,03 s²/m, vale 4π²/g; com ele o aluno calcula g.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="estatistica">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Estatística de medidas repetidas</h2>
+      <p>Para quem mediu a mesma coisa várias vezes, o programa calcula média com erro padrão, mediana, desvio padrão e variância. O agrupamento por X repetido junta as repetições de cada condição, para que elas virem um ponto com barra de erro e não vários pontos soltos.</p>
+    </div>
+    <figure>
+      <a href="img/estatistica.png" target="_blank" rel="noopener"><img src="img/estatistica.png" width="1280" height="800" loading="lazy" alt="Tela de estatística com média, mediana e desvio padrão de uma coluna e uma tabela de agrupamento por comprimento repetido."></a>
+      <figcaption><b>Figura 4.</b> Três comprimentos de pêndulo, cinco medidas de período em cada um, agrupados em média, desvio padrão e erro padrão.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="erro">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Propagação de erro em contas pontuais</h2>
+      <p>Nem toda atividade tem uma curva. Para área e volume a partir de medidas de régua ou paquímetro, a calculadora recebe cada medida com seu erro instrumental, converte as unidades (base em dm, altura em mm, por exemplo) e entrega o resultado arredondado como o laboratório pede. Abaixo do resultado, mostra quanto cada medida pesou no erro final, o que indica qual instrumento vale a pena refazer.</p>
+      <p>Fórmulas prontas: área do retângulo, área do círculo, volume do cilindro e volume do paralelepípedo.</p>
+    </div>
+    <figure>
+      <a href="img/erro-propagado.png" target="_blank" rel="noopener"><img src="img/erro-propagado.png" width="1280" height="800" loading="lazy" alt="Calculadora de erro propagado com a área de um retângulo de 21,0 por 29,7 centímetros, resultado 624 mais ou menos 3 centímetros quadrados."></a>
+      <figcaption><b>Figura 5.</b> Área de uma folha A4 medida com régua (erro de 0,05 cm por lado).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="relatorio">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Relatório em formato ABNT</h2>
+      <p>Com título, autor, objetivos, roteiro, conclusões e referências preenchidos, o programa monta o documento .docx com os dados, o último ajuste e o gráfico atual. Se a pasta de trabalho tem várias planilhas, o aluno escolhe quais entram. Quando duas planilhas receberam ajuste, o relatório ganha uma seção que compara os parâmetros e marca com ✓ ou ✗ se são compatíveis dentro do erro combinado.</p>
+      <p>Há também a opção de salvar uma cópia em .odt, que depende do LibreOffice instalado.</p>
+    </div>
+    <figure class="narrow">
+      <a href="img/relatorio.png" target="_blank" rel="noopener"><img src="img/relatorio.png" width="480" height="557" loading="lazy" alt="Janela Gerar Relatório de Laboratório com campos de título, autor, objetivos, roteiro, conclusões e referências, e a lista de planilhas a incluir."></a>
+      <figcaption><b>Figura 6.</b> Janela de geração do relatório.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="ajuda">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Feito para quem está começando</h2>
+      <p>Cada tela tem um guia curto e o programa traz um glossário com os termos que aparecem nos resultados: χ², R², erro padrão, banda de confiança, graus de liberdade. A ajuda abre na seção da tela em que o aluno está (F1). Os botões têm dicas ao passar o mouse, e há atalhos de teclado para tudo o que se repete.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <a href="img/ajuda.png" target="_blank" rel="noopener"><img src="img/ajuda.png" width="880" height="520" loading="lazy" alt="Janela de ajuda na aba Ajuste e Linearização, com o fluxo de três passos explicado."></a>
+        <figcaption><b>Figura 7.</b> Ajuda embutida, aberta na seção de ajuste.</figcaption>
+      </figure>
+      <figure>
+        <a href="img/atalhos.png" target="_blank" rel="noopener"><img src="img/atalhos.png" width="880" height="520" loading="lazy" alt="Janela de ajuda na aba Atalhos, listando Ctrl+1 a Ctrl+5 para navegar entre telas, Ctrl+S, Ctrl+O, Ctrl+R, Ctrl+Z e Ctrl+Y."></a>
+        <figcaption><b>Figura 8.</b> Lista de atalhos de teclado.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="confianca">
+  <div class="wrap">
+    <h2>Confiabilidade</h2>
+    <dl class="facts">
+      <div><dt>Salvamento automático</dt><dd>Versões periódicas da pasta de trabalho, com opção de recuperar uma versão anterior.</dd></div>
+      <div><dt>Desfazer e refazer</dt><dd>Edição de célula, coluna, linha, outlier, importação e template podem ser desfeitos.</dd></div>
+      <div><dt>Registro de erros</dt><dd>Falhas inesperadas ficam gravadas em arquivo de log, para diagnóstico.</dd></div>
+      <div><dt>Testes automatizados</dt><dd>198 testes cobrem cálculo, ajuste, relatório e partes da interface. Nenhum item é dado como pronto sem teste com dados reais.</dd></div>
+      <div><dt>Quatro temas</dt><dd>Sistema, claro, escuro e alto contraste, com cores de célula calculadas para manter a leitura em qualquer um.</dd></div>
+      <div><dt>Funciona offline</dt><dd>Roda localmente, sem conta e sem enviar dados para a internet.</dd></div>
+    </dl>
+    <figure style="margin-top:32px">
+      <a href="img/tema-escuro.png" target="_blank" rel="noopener"><img src="img/tema-escuro.png" width="1280" height="800" loading="lazy" alt="Tela do gráfico no tema escuro."></a>
+      <figcaption><b>Figura 9.</b> O mesmo gráfico no tema escuro. A área do gráfico permanece clara para que a figura exportada seja idêntica à da tela.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="estado">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Estado do projeto</h2>
+      <p>Em desenvolvimento ativo, distribuído como AppImage para Linux e executável .exe para Windows. O desenvolvimento segue um roteiro de oito fases; as de temas, relatório, linearização, multiplanilha e leitura gráfica estão concluídas, e as de ajuda embutida, robustez técnica e fechamento estão em andamento.</p>
+      <p>O que falta para a ajuda embutida é testar com alunos que nunca usaram o programa. Esse é o ponto em que a opinião da coordenação e de quem leciona a disciplina mais ajudaria.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Curvatura, por Marcos Gabriel. Licenciatura em Física, IF Sertão, Petrolina (PE).</p>
+    <p>As imagens desta página são capturas reais do programa, com dados simulados.</p>
+  </div>
+</footer>
+
+</body>
+</html>
